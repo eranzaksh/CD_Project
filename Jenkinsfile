@@ -28,6 +28,7 @@ pipeline {
             steps {
                 script {
                     sh """
+                    echo "Git commit: ${params.GIT_COMMIT}"
                     yq -i '.image.tag = "'${params.GIT_COMMIT}'"' web-app/values.yaml
                     """
                 }
@@ -83,10 +84,9 @@ pipeline {
             --path web-app \
             --dest-namespace default \
             --dest-server https://kubernetes.default.svc \
-            --sync-policy automated
+            --sync-policy automated \
             --auto-prune \
             --sync-option CreateNamespace=true
-
             '''
         }
     }
