@@ -11,8 +11,6 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}
-      annotations:
-        checksum/api-secret: {{ .Values.secret.key | sha256sum }}
     spec:
       containers:
         - name: {{ .Values.name }}
