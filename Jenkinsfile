@@ -63,12 +63,15 @@ pipeline {
     }
     stage('Connect to argocd') {
         steps {
+            withAWS(region: 'eu-north-1', credentials: 'aws-access-and-secret') {
             sh '''
+            
             aws eks update-kubeconfig --name tf-eks
 
             export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
             argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
             '''
+            }
         }
     }
 
