@@ -1,7 +1,7 @@
 name: "web-app"
 image:
   repository: eranzaksh/leumi
-  tag: "4aebfc2ac981826cb339fe0d3447f4ec627f19cd"
+  tag: "latest"
 service:
   type: ClusterIP
   targetPort: 5000
