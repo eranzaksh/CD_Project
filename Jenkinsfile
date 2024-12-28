@@ -4,7 +4,7 @@ pipeline {
         GIT_COMMIT = ''
         ARGOCD_SERVER = 'eranargocd.duckdns.org:443'
         DOMAIN='eranargocd'
-        TOKEN='70898463-8ad9-40a2-ae2f-257d51307eab' 
+        TOKEN = credentials('duckdns-token') 
         DUCKDNS_URL="https://www.duckdns.org/update?domains=${DOMAIN}&token=${TOKEN}"
     }
 
@@ -73,8 +73,9 @@ pipeline {
             sh '''
             
             aws eks update-kubeconfig --name tf-leumi
-            export LbDnsName=`kubectl get svc nginx-ingress-ingress-nginx-controller -n ingress-nginx -o json | jq -r \'.status.loadBalancer.ingress[0].hostname\'`
-            CLB_IP=$(dig +short $CLB_DNS_NAME | head -n 1)
+            export LbDnsName=`kubectl get svc -n ingress-nginx | awk -F ' ' '{print $4}' | head -n2 | tail -n1`
+            export CLB_IP=`dig +short ${CLB_DNS_NAME} | head -n 1`
+            curl "$DUCKDNS_URL&ip=$CLB_IP"
 
             export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
             argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
