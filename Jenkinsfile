@@ -74,7 +74,7 @@ pipeline {
             
             aws eks update-kubeconfig --name tf-leumi
             export LbDnsName=`kubectl get svc -n ingress-nginx | awk -F ' ' '{print $4}' | head -n2 | tail -n1`
-            export CLB_IP=$(nslookup ${CLB_DNS_NAME} | grep 'Address' | tail -n 1 | awk '{print $2}')            
+            nslookup ${CLB_DNS_NAME}
             curl "$DUCKDNS_URL&ip=$CLB_IP"
             export ARGO_PWD=`kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d`
             argocd login $ARGOCD_SERVER --username admin --password $ARGO_PWD --insecure
