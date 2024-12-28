@@ -3,9 +3,9 @@ pipeline {
     environment {
         GIT_COMMIT = ''
         ARGOCD_SERVER = 'eranargocd.duckdns.org:443'
-        DOMAIN='eranargocd'
+        DOMAINS="eranargocd,leumiapp,erangrafana"
         TOKEN = credentials('duckdns-token') 
-        DUCKDNS_URL="https://www.duckdns.org/update?domains=${DOMAIN}&token=${TOKEN}"
+        DUCKDNS_URL="https://www.duckdns.org/update?domains=${DOMAINS}&token=${TOKEN}"
     }
 
 
