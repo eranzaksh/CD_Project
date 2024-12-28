@@ -32,11 +32,11 @@ pipeline {
                     """
                 }
             }
-        }
+            }
     stage('git push') {
         steps {
             withCredentials([
-                sshUserPrivateKey(credentialsId: 'github-for-jobs', keyFileVariable: 'SSH_KEY', usernameVariable: 'GIT_USER')
+                sshUserPrivateKey(credentialsId: 'github-ssh', keyFileVariable: 'SSH_KEY', usernameVariable: 'GIT_USER')
             ]) {
                 script {
                     // Ensure the repository directory is safe
@@ -46,6 +46,7 @@ pipeline {
                     git config user.name "Jenkins Bot"
                     git config user.email "jenkins@example.com"
 
+                    # Set the GitHub SSH remote URL
                     git remote set-url origin git@github.com:eranzaksh/leumi_jenkins_Project_CD.git
 
                     # Add GitHub's SSH key to known_hosts to prevent "Host key verification failed"
@@ -55,12 +56,14 @@ pipeline {
                     git add .
                     git commit -m "update values.yaml" || echo "No changes"
 
+                    # Push changes using SSH key
                     GIT_SSH_COMMAND="ssh -i $SSH_KEY" git push origin HEAD:main
                     '''
                 }
             }
         }
     }
+
     stage('Connect to argocd') {
         steps {
             withAWS(region: 'eu-north-1', credentials: 'aws-access-and-secret') {
