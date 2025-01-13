@@ -1,1 +1,1 @@
-CD GitOps project for Leumi
+CD GitOps project
