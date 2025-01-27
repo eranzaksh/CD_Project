@@ -43,7 +43,7 @@ pipeline {
             ]) {
                 script {
                     // Ensure the repository directory is safe
-                    sh 'git config --global --add safe.directory /home/ec2-user/workspace/leumi-cd'
+                    sh 'git config --global --add safe.directory /home/ec2-user/workspace/project-cd'
 
                     sh '''
                     git config user.name "Jenkins Bot"
