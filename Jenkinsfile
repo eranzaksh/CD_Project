@@ -50,7 +50,7 @@ pipeline {
                     git config user.email "jenkins@example.com"
 
                     # Set the GitHub SSH remote URL
-                    git remote set-url origin git@github.com:eranzaksh/CD_Project.git
+                    git remote set-url origin git@github.com/eranzaksh/CD_Project.git
 
                     # Add GitHub's SSH key to known_hosts to prevent "Host key verification failed"
                     mkdir -p ~/.ssh
