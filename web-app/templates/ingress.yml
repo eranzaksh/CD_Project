@@ -5,7 +5,6 @@ metadata:
   name: "{{ .Values.app.name }}-ingress"
   namespace: {{ .Values.app.namespace }}
   annotations:
-    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     {{- with .Values.app.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
