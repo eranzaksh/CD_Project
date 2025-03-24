@@ -1,4 +1,3 @@
-name: "web-app"
 image:
   repository: eranzaksh/leumi
   tag: "370d144d329a12a8760913b651c096a03228392e"
@@ -8,3 +7,12 @@ service:
   port: 443
 spec:
   replicaCount: 1
+
+app:
+  name: "web-app"
+  namespace: web-app
+  ingress:
+    enabled: true
+    host: eranapp.duckdns.org
+    className: nginx
+    annotations: {cert-manager.io/cluster-issuer: "letsencrypt-prod"}
