@@ -1,16 +1,16 @@
 image:
-  repository: eranzaksh/leumi
-  tag: "370d144d329a12a8760913b651c096a03228392e"
+  repository: eranzaksh/moviesapp
+  tag: "da37dbd"
 service:
   enabled: true
   type: ClusterIP
-  targetPort: 5000
+  targetPort: 5005
   port: 443
 spec:
   replicaCount: 1
 
 app:
-  name: "web-app"
+  name: web-app
   namespace: web-app
   ingress:
     enabled: true
