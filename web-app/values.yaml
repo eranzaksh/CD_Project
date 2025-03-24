@@ -2,6 +2,7 @@ image:
   repository: eranzaksh/leumi
   tag: "370d144d329a12a8760913b651c096a03228392e"
 service:
+  enabled: true
   type: ClusterIP
   targetPort: 5000
   port: 443
