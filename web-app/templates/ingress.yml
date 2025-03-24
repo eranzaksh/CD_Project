@@ -6,7 +6,7 @@ metadata:
   namespace: {{ .Values.app.namespace }}
   annotations:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    {{- with .Values.argocd.ingress.annotations }}
+    {{- with .Values.app.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
