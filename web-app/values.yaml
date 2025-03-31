@@ -1,6 +1,6 @@
 image:
   repository: eranzaksh/project
-  tag: "f946ea7f2f546a1418702018c7a58c64d269dd57"
+  tag: "555d994ab3718bbad94565c3a9a270f00cd5dc55"
 service:
   enabled: true
   type: ClusterIP
