@@ -103,7 +103,7 @@ pipeline {
             argocd app create web-app \
             --repo https://github.com/eranzaksh/CD_Project.git \
             --path web-app \
-            --dest-namespace default \
+            --dest-namespace web-app \
             --dest-server https://kubernetes.default.svc \
             --sync-policy automated \
             --auto-prune \
