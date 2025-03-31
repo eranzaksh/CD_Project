@@ -1,6 +1,6 @@
 image:
   repository: eranzaksh/leumi
-  tag: "6b3dc0bb3268616e1f8f61b5d1af11a9fd26ec49"
+  tag: "e479a571afc4ad3860b8d287bd0e60bd2eaf6bba"
 service:
   enabled: true
   type: ClusterIP
