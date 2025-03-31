@@ -1,5 +1,5 @@
 image:
-  repository: eranzaksh/leumi
+  repository: eranzaksh/project
   tag: "f946ea7f2f546a1418702018c7a58c64d269dd57"
 service:
   enabled: true
