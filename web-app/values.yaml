@@ -1,6 +1,6 @@
 image:
   repository: eranzaksh/leumi
-  tag: "370d144d329a12a8760913b651c096a03228392e"
+  tag: "latest"
 service:
   enabled: true
   type: ClusterIP
@@ -8,7 +8,6 @@ service:
   port: 443
 spec:
   replicaCount: 1
-
 app:
   name: "web-app"
   namespace: web-app
